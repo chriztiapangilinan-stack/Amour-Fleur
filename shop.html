@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amour & Fleur | Flower Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="shop">
+            <img src="images/logo (1).png" alt="Logo">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <div class="iconn">
+            <i class="fa-regular fa-heart"></i>
+            <a href="contact.html"><i class="fa-regular fa-user"></i></a>
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </header>
+
+    <!-- Shop Section -->
+    <section class="shop-page">
+        <div class="shop-header">
+            <div class="filtering">
+                <i class="fas fa-sliders-h"></i> Filtering
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search....">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="sort-option">
+                <i class="fas fa-sort-amount-down"></i> Cheap
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="images/sp1.png" alt="Periwinkle">
+                <h3>Periwinkle</h3>
+                <p>₱800</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp2.png" alt="Daisy">
+                <h3>Daisy</h3>
+                <p>₱500</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp3.png" alt="Sunflower">
+                <h3>Sunflower</h3>
+                <p>₱750</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp4.png" alt="White Rose">
+                <h3>White Rose</h3>
+                <p>₱550</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp5.png" alt="Carnations">
+                <h3>Carnations</h3>
+                <p>₱1,500</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp6.png" alt="Red Rose">
+                <h3>Red Rose</h3>
+                <p>₱600</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp7.png" alt="Tulip">
+                <h3>Tulip</h3>
+                <p>₱900</p>
+                <button>Add to cart</button>
+            </div>
+
+            <div class="product-card">
+                <img src="images/sp8.png" alt="Lavender">
+                <h3>Lavender</h3>
+                <p>₱400</p>
+                <button>Add to cart</button>
+            </div>
+        </div>
+
+        <footer class="shop-footer">
+            © Copyright 2025 All rights reserved. 
+            Created by: Chriztia Nicole L. Pangilinan
+        </footer>
+    </section>
+
+</body>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const buttons = document.querySelectorAll(".product-card button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const product = button.parentElement;
+      const name = product.querySelector("h3").textContent;
+      const price = product.querySelector("p").textContent;
+      const image = product.querySelector("img").src;
+
+      // Create product object
+      const item = { name, price, image };
+
+      // Add to cart array
+      cart.push(item);
+
+      // Save to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Confirmation message
+      alert(`${name} has been added to your cart!`);
+    });
+  });
+</script>
+</html>
